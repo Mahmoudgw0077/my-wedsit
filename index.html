@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منشئ بوتات تليجرام - مع OpenAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>منشئ بوتات تليجرام الذكية</h1>
+            <p>اصنع بوتك الخاص باستخدام الذكاء الاصطناعي في دقائق!</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#" id="home-link">الرئيسية</a></li>
+                <li><a href="#" id="create-link">إنشاء بوت جديد</a></li>
+                <li><a href="#" id="mybots-link">بوتاتي</a></li>
+                <li><a href="#" id="login-link">تسجيل الدخول</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- قسم إنشاء البوت -->
+        <section id="create-bot-section" class="hidden">
+            <h2>إنشاء بوت جديد</h2>
+            <div class="bot-creation-steps">
+                <div class="step">
+                    <h3>الخطوة 1: إنشاء بوت في تليجرام</h3>
+                    <ol>
+                        <li>افتح تطبيق تليجرام</li>
+                        <li>ابحث عن @BotFather</li>
+                        <li>أرسل الأمر /newbot</li>
+                        <li>أدخل اسم البوت</li>
+                        <li>أدخل اسم المستخدم للبوت (يجب أن ينتهي بـ bot)</li>
+                        <li>احفظ التوكن الذي سيعطيه لك BotFather</li>
+                    </ol>
+                </div>
+            </div>
+            <form id="bot-creation-form">
+                <div class="form-group">
+                    <label for="bot-token">توكن البوت (من BotFather):</label>
+                    <input type="text" id="bot-token" required placeholder="مثال: 123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
+                    <small class="help-text">يمكنك الحصول على التوكن من @BotFather في تليجرام</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="bot-id">معرف البوت (Bot ID):</label>
+                    <input type="text" id="bot-id" required placeholder="مثال: 123456789">
+                    <small class="help-text">هو الرقم الأول في التوكن قبل النقطتين</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="bot-name">اسم البوت:</label>
+                    <input type="text" id="bot-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bot-description">وصف البوت:</label>
+                    <textarea id="bot-description" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bot-personality">شخصية البوت:</label>
+                    <select id="bot-personality">
+                        <option value="professional">احترافي</option>
+                        <option value="friendly">ودود</option>
+                        <option value="funny">مضحك</option>
+                        <option value="strict">صارم</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="openai-model">نموذج الذكاء الاصطناعي:</label>
+                    <select id="openai-model">
+                        <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                        <option value="gpt-4">GPT-4</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">إنشاء البوت</button>
+            </form>
+            
+            <div id="bot-creation-result" class="hidden">
+                <h3>تم إنشاء البوت بنجاح!</h3>
+                <div class="bot-info">
+                    <p><strong>اسم البوت:</strong> <span id="result-bot-name"></span></p>
+                    <p><strong>رابط البوت:</strong> <a id="result-bot-link" target="_blank"></a></p>
+                    <p><strong>Token:</strong> <code id="result-bot-token"></code></p>
+                </div>
+                <button id="copy-token" class="btn">نسخ التوكن</button>
+            </div>
+        </section>
+
+        <!-- قسم عرض البوتات -->
+        <section id="my-bots-section" class="hidden">
+            <h2>بوتاتي</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="ابحث عن بوت...">
+            </div>
+            <div id="bots-list">
+                <!-- سيتم ملؤها بالبوتات عبر JavaScript -->
+            </div>
+        </section>
+
+        <!-- قسم تسجيل الدخول -->
+        <section id="login-section">
+            <h2>تسجيل الدخول / إنشاء حساب</h2>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني:</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">كلمة المرور:</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">تأكيد كلمة المرور:</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn">تسجيل الدخول</button>
+                    <button type="button" class="btn secondary" id="switch-form">إنشاء حساب جديد</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

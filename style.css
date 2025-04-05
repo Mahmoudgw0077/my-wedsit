@@ -1,0 +1,387 @@
+/* أساسيات */
+:root {
+    --primary-color: #0088cc;
+    --secondary-color: #f0f0f0;
+    --dark-color: #333;
+    --light-color: #fff;
+    --success-color: #4CAF50;
+    --error-color: #f44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* التنسيق العام */
+h1, h2, h3, h4 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* الهيدر */
+header {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 30px 0;
+    text-align: center;
+}
+
+header h1 {
+    color: var(--light-color);
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* التنقل */
+nav {
+    background-color: var(--dark-color);
+    padding: 15px 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--light-color);
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+/* الأقسام الرئيسية */
+section {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* النماذج */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* الأزرار */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #006699;
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+.btn.secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn.large {
+    padding: 15px 30px;
+    font-size: 18px;
+}
+
+/* ميزات الصفحة الرئيسية */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.feature {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* نتائج إنشاء البوت */
+.bot-info {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.bot-info p {
+    margin-bottom: 10px;
+}
+
+.bot-info code {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    word-break: break-all;
+}
+
+/* قائمة البوتات */
+#bots-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.bot-card {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.bot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bot-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.bot-card p {
+    margin-bottom: 5px;
+}
+
+.bot-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.bot-actions .btn {
+    flex: 1;
+    text-align: center;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* الفوتر */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* التجاوب */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* التنبيهات */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-success {
+    background-color: var(--success-color);
+}
+
+.alert-error {
+    background-color: var(--error-color);
+}
+
+/* مؤشر التحميل */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--secondary-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* تحسينات للأخطاء في النماذج */
+input.error, textarea.error {
+    border-color: var(--error-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.bot-creation-steps {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.step {
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.step ol {
+    padding-right: 20px;
+}
+
+.step li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.help-text {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9em;
+}
